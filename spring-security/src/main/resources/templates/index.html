@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta  content="text/html" charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <div>
+                <a href="#">演示</a>
+            </div>
+            <div id="navbar">
+                <ul>
+                    <li>
+                        <a th:href="@{/}">首页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <h1 th:text="${msg.title}"></h1>
+        <p th:text="${msg.content}"></p>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+            <p th:text="${msg.etraInfo}"></p>
+        </div>
+
+        <div sec:authorize="hasRole('ROLE_USER')">
+            <p th:text="${msg.etraInfo}">无更多信息显示</p>
+        </div>
+        <form th:action="@{/logout}" method="post" >
+            <input type="submit" value="注销">
+
+        </form>
+    </div>
+</body>
+</html>

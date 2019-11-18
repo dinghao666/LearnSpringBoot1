@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+    <nar>
+        <div>
+            <div>
+                <a href="#">spring security演示</a>
+            </div>
+            <div id="navbar">
+                <ul>
+                    <li>
+                        <a th:href="@{/}">首页</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nar>
+
+    <div>
+        <div>
+            <p th:if="${param.logout}">已成功注销</p>
+            <p th:if="${param.error}">有错误，请重试</p>
+            <h2>使用账号密码登录</h2>
+            <form name="form" th:action="@{/login}" action="/login" method="post">
+                <div class="form-group">
+                    <label for="username">账号</label>
+                    <input type="text"  id="username" name="username" value="" placeholder="账号" >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" value="" placeholder="密码" >
+                </div>
+                <input type="submit" id="login" value="Login" >
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
